@@ -1,0 +1,16 @@
+{
+  "name": "dev.product.ui",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {},
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "dependencies": {
+    "rxjs-compat": "^6.6.7"
+  }
+}

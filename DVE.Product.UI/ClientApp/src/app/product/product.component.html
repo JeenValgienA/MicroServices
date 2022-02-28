@@ -1,0 +1,49 @@
+﻿<h1 id="tableLabel">Product</h1>
+
+<p *ngIf="productNames">The Product List.</p>
+<p *ngIf="productDetail">The Product Detail.</p>
+
+<p *ngIf="!productNames && !productDetail && sourceAction==0"><em>Loading...</em></p>
+<p *ngIf="!productNames && sourceAction==1"><em>No Product Available !!!</em></p>
+<p *ngIf="!productDetail && sourceAction==2"><em>Invalid Product !!!</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="productNames">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let productName of productNames">
+            <td>{{ productName.id }}</td>
+            <td><a [routerLink]="['/product', productName.id ]">{{ productName.name }}</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="productDetail">
+    <thead>
+        <tr>
+            <th>Product:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Id : {{ productDetail.id }}</td>
+        </tr>
+        <tr>
+            <td>Name : {{ productDetail.name }}</td>
+        </tr>
+        <tr>
+            <td>Entry Date : {{ productDetail.entryDate | date:'longDate' }}</td>
+        </tr>
+        <tr>
+            <td>Price for today (incl. reduction) : {{ productDetail.todayPrice | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+            <td><b><a class="nav-link text-dark" [routerLink]="['/product']">Back To Product List</a></b></td>
+        </tr>
+    </tbody>
+</table>
